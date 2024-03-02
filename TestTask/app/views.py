@@ -47,8 +47,11 @@ def item_detail(request, id):
 
 def buy_order(request, id):
     order = Order.objects.select_related('tax', 'discount').get(id=id)
-    total_price = OrderItem.objects.filter(order=order).aggregate(
-        total_price=Sum('item__price') * Sum('quantity'))['total_price']
+
+    total_price = 0
+    order_items = OrderItem.objects.filter(order=order)
+    for order_item in order_items:
+        total_price += order_item.item.price * order_item.quantity
 
     tax_rate = order.tax.create_stripe_tax()
     coupon = order.discount.create_stripe_discount(order.currency)
