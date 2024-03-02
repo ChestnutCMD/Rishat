@@ -51,7 +51,7 @@
 },
 {
   "model": "app.discount",
-  "pk": 2,
+  "pk": 1,
   "fields": {
     "name": "Скидка на заказ",
     "percent_off": 20,
