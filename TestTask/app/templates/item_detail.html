@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+ {% csrf_token %}
+<table class="table">
+	<thead>
+		<tr>
+            <th>Name</th>
+			<th>Description</th>
+			<th>Price</th>
+			<th>Currency</th>
+			<th>Buy item</th>
+
+		</tr>
+	</thead>
+	<tbody>
+
+        <tr>
+        	<th>{{item.name}}</th>
+        	<th>{{item.description}}</th>
+        	<th>{{item.price}}</th>
+			<th>{{item.currency}}</th>
+			<th><button class="btn" type="submit">Buy</button></th>
+
+
+        </tr>
+
+	</tbody>
+</table>
+
+</form>
+{% endblock %}

@@ -1,0 +1,72 @@
+[
+{
+  "model": "app.item",
+  "pk": 1,
+  "fields": {
+    "currency": "usd",
+    "name": "iPad 2021",
+    "description": "Планшет Apple iPad 2021 64Gb Wi-Fi A2602 10.2\", 64GB, Wi-Fi, iOS серый космос",
+    "price": "394.06"
+  }
+},
+{
+  "model": "app.item",
+  "pk": 2,
+  "fields": {
+    "currency": "usd",
+    "name": "iPhone 15 Pro Max",
+    "description": "Смартфон Apple iPhone 15 Pro Max 256Gb, A3108, синий титан",
+    "price": "1900.68"
+  }
+},
+{
+  "model": "app.item",
+  "pk": 3,
+  "fields": {
+    "currency": "usd",
+    "name": "Apple iPhone 15",
+    "description": "Смартфон Apple iPhone 15 128Gb, A3092, черный",
+    "price": "1007.22"
+  }
+},
+{
+  "model": "app.item",
+  "pk": 4,
+  "fields": {
+    "currency": "usd",
+    "name": "Apple iPhone 15 Plus",
+    "description": "Смартфон Apple iPhone 15 Plus 128Gb, A3096, розовый",
+    "price": "1255.77"
+  }
+},
+{
+  "model": "app.item",
+  "pk": 5,
+  "fields": {
+    "currency": "usd",
+    "name": "зарядное устройство Apple",
+    "description": "Сетевое зарядное устройство Apple A2347, USB type-C, 2.2A, белый",
+    "price": "37.11"
+  }
+},
+{
+  "model": "app.discount",
+  "pk": 2,
+  "fields": {
+    "name": "Скидка на заказ",
+    "percent_off": 20,
+    "duration": "once"
+  }
+},
+{
+  "model": "app.tax",
+  "pk": 1,
+  "fields": {
+    "display_name": "Налог на продажу",
+    "description": "Ставка налога на продажу",
+    "jurisdiction": "US",
+    "percentage": "10.5",
+    "inclusive": false
+  }
+}
+]

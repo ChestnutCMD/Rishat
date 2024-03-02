@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form action="" method="post">
+{% csrf_token %}
+<table class="table">
+	<thead>
+		<tr>
+            <th>Name</th>
+			<th>Description</th>
+			<th>Price</th>
+			<th>Currency</th>
+			<th>Add item</th>
+			<th>Count</th>
+		</tr>
+	</thead>
+	<tbody>
+    {% for item in items %}
+
+        <tr>
+        	<th><a href="/item/{{item.id}}/">{{item.name}}</a></th>
+        	<th>{{item.description}}</th>
+        	<th>{{item.price}}</th>
+			<th>{{item.currency}}</th>
+			<th><label class="checkbox-ios"><input type="checkbox" name="selected_items" value="{{ item.id }}"><span class="checkbox-ios-switch"></span></label></th>
+			<th><input type="number" name="item_quantity_{{ item.id }}" value="1" min="1" step="1"></th>
+        </tr>
+
+    {% endfor %}
+	</tbody>
+</table>
+	<div align="center">
+		<select name="selected_currency" size="3" multiple>
+    	<option selected value="usd">USD</option>
+    	<option value="eur">EUR</option>
+    	<option value="rub">RUB</option>
+		</select>
+    	<button class="btn" type="submit">Buy</button>
+	</div>
+</form>
+{% endblock %}
