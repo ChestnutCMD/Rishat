@@ -3,14 +3,12 @@ version: '3.9'
 services:
 
   api:
-    image: $DOCKER_USERNAME/saqartvel-drf:$GITHUB_REF_NAME-$GITHUB_RUN_ID
+    image: $DOCKER_USERNAME/rishat:$GITHUB_REF_NAME-$GITHUB_RUN_ID
     restart: always
     env_file:
       - .env
     environment:
       DB_HOST: postgres
-    volumes:
-      - ./logs:/app/logs
     depends_on:
       postgres:
         condition: service_healthy
@@ -37,4 +35,3 @@ services:
 
 volumes:
   pg_data:
-  logs:
