@@ -8,9 +8,9 @@ jobs:
         uses: actions/checkout@v2
       - name: Docker build and push
         run: |
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/saqartvel-drf:$GITHUB_REF_NAME-$GITHUB_RUN_ID .
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/rishat:$GITHUB_REF_NAME-$GITHUB_RUN_ID .
           echo ${{ secrets.DOCKER_TOKEN }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
-          docker push ${{ secrets.DOCKER_USERNAME }}/saqartvel-drf:$GITHUB_REF_NAME-$GITHUB_RUN_ID
+          docker push ${{ secrets.DOCKER_USERNAME }}/rishat:$GITHUB_REF_NAME-$GITHUB_RUN_ID
 
   deploy:
     runs-on: ubuntu-latest
