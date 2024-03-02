@@ -7,4 +7,4 @@ COPY /TestTask .
 
 ENTRYPOINT ["bash", "entrypoint.sh"]
 CMD ["python", "manage.py", "runserver", "0.0.0.0:7000"]
-EXPOSE 8000
+EXPOSE 7000
