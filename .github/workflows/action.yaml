@@ -20,7 +20,9 @@ jobs:
       DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
       DB_NAME: ${{ secrets.DB_NAME }}
       DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-      SECRET_KEY: ${{ secrets.SECRET_KEY}}
+      SECRET_KEY: ${{ secrets.SECRET_KEY }}
+      STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY }}
+      STRIPE_PUBLISHABLE_KEY: ${{ secrets.STRIPE_PUBLISHABLE_KEY }}
     steps:
       - name: clone code
         uses: actions/checkout@v2
