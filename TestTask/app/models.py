@@ -1,15 +1,15 @@
-import stripe
-from django.db import models
+from typing import Optional
 
-from TestTask import settings
+from django.db import models
+from stripe import Coupon, TaxRate, Price
 
 
 class BaseModel(models.Model):
     CURRENCY = [('usd', 'usd'), ('rub', 'rub'), ('eur', 'eur')]
     currency = models.CharField(choices=CURRENCY, max_length=3, default='usd')
 
-    def get_stripe_price(self, total_price):
-        price = stripe.Price.create(
+    def get_stripe_price(self, total_price: Optional[float | int]) -> Price:
+        price = Price.create(
             currency=self.currency,
             unit_amount=int(total_price * 100),
             product_data={"name": self.__str__()})
@@ -42,8 +42,8 @@ class Discount(models.Model):
     def __str__(self):
         return self.name
 
-    def create_stripe_discount(self, currency):
-        coupon = stripe.Coupon.create(
+    def create_stripe_discount(self, currency: str) -> Coupon:
+        coupon = Coupon.create(
             name=self.name,
             currency=currency,
             percent_off=self.percent_off,
@@ -66,8 +66,8 @@ class Tax(models.Model):
     def __str__(self):
         return self.display_name
 
-    def create_stripe_tax(self):
-        tax_rate = stripe.TaxRate.create(
+    def create_stripe_tax(self) -> TaxRate:
+        tax_rate = TaxRate.create(
             display_name=self.display_name,
             description=self.description,
             jurisdiction=self.jurisdiction,
@@ -98,21 +98,3 @@ class OrderItem(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField()
-
-
-
-
-
-
-    # def make_payment(self, price):
-    #     stripe.api_key = settings.STRIPE_SECRET_KEY
-    #
-    #     payment_intent = stripe.PaymentIntent.create(
-    #         payment_method_types=['card'],
-    #         amount=int(price * 100),
-    #         currency=self.items.first().currency,
-    #         description="Order",
-    #         metadata={'order_id': self.id},
-    #     )
-    #
-    #     return payment_intent
